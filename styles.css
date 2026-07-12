@@ -212,6 +212,21 @@ body.nav-open .menu-toggle span:last-child {
   color: #f4c36c;
 }
 
+.eyebrow,
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before,
+.section-kicker::before {
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+  content: "";
+}
+
 h1,
 h2,
 h3,
@@ -292,11 +307,23 @@ h3 {
 .button-primary {
   background: #f4c36c;
   color: #1a1712;
+  box-shadow: 0 12px 28px rgba(217, 148, 44, 0.32);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: #f7cd82;
 }
 
 .button-secondary {
   border: 1px solid rgba(255, 255, 255, 0.68);
   color: #ffffff;
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .scroll-cue {
@@ -1022,6 +1049,35 @@ h3 {
   text-align: right;
 }
 
+section[id] {
+  scroll-margin-top: 92px;
+}
+
+.signal-card:hover,
+.stat-card:hover,
+.parallel-card:hover,
+.voice-note:hover,
+.issue-panel:hover {
+  transform: translateY(-5px);
+  border-color: rgba(14, 103, 96, 0.32);
+  box-shadow: 0 28px 62px rgba(18, 24, 26, 0.16);
+}
+
+.sdg-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -1033,6 +1089,20 @@ h3 {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.signal-card,
+.stat-card,
+.sdg-card,
+.voice-note,
+.parallel-card,
+.issue-panel {
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    border-color 240ms ease,
+    background 240ms ease,
+    opacity 500ms ease;
 }
 
 @media (max-width: 900px) {
