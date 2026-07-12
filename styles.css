@@ -718,6 +718,53 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.voice-wall .split-heading p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+}
+
+.parallel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.parallel-card {
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 16px 44px rgba(18, 24, 26, 0.08);
+}
+
+.parallel-card > p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+}
+
+.parallel-source {
+  margin: 0 0 12px;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.parallel-card-accent {
+  background: #ecf7f2;
+  border-color: rgba(14, 103, 96, 0.22);
+}
+
+.parallel-note {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
 .voice-wall-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1013,7 +1060,8 @@ h3 {
   .comparison,
   .meter-steps,
   .sdg-card-grid,
-  .voice-wall-grid {
+  .voice-wall-grid,
+  .parallel-grid {
     grid-template-columns: 1fr;
   }
 

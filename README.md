@@ -14,7 +14,7 @@ Live site: https://advocacy-campaign.vercel.app
 - Role creep meter
 - Research and evidence section
 - SDG 3, SDG 8, and SDG 10 connection
-- Worker voice wall
+- Parallel text (real viral Reddit account, via A. Canamo's LinkedIn post)
 - Fair Scope Pledge prototype
 
 ## Run locally
