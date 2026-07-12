@@ -1,6 +1,8 @@
 # Project TAWAG
 
-**Tamang Aksyon, Walang Abusadong Gawa.**
+**Fair work, fair worth.** — Tamang Aksyon, Walang Abusadong Gawa.
+
+Group 3, Section C1 (Aguilar, Canamo, Diesta, Pardo, Salarda).
 
 Project TAWAG is a static advocacy campaign website about entry-level workload exploitation, role creep, and fair work.
 
@@ -11,8 +13,8 @@ Live site: https://advocacy-campaign.vercel.app
 - Campaign landing page
 - Role creep meter
 - Research and evidence section
-- SDG 3, SDG 8, and SDG 10 connection
-- Worker voice wall
+- SDG 3, 5, 8, and 10 connection
+- Parallel text (real viral Reddit account, via a LinkedIn post)
 - Fair Scope Pledge prototype
 
 ## Run locally
