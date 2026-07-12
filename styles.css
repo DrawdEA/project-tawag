@@ -651,7 +651,7 @@ h3 {
 
 .sdg-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -680,6 +680,10 @@ h3 {
 
 .sdg-card-health .sdg-number {
   background: #4c9f38;
+}
+
+.sdg-card-gender .sdg-number {
+  background: #ff3a21;
 }
 
 .sdg-card-work .sdg-number {
