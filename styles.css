@@ -801,6 +801,49 @@ h3 {
   line-height: 1.24;
 }
 
+.reaction-wall {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.reaction-wall .split-heading p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+}
+
+.reaction-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.reaction-col {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.reaction-col .voice-note {
+  min-height: 0;
+}
+
+.reaction-label {
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reaction-label-normalize {
+  color: var(--coral);
+}
+
+.reaction-label-refuse {
+  color: var(--teal);
+}
+
 .petition-section {
   background:
     linear-gradient(135deg, rgba(14, 103, 96, 0.95), rgba(7, 59, 58, 0.96)),
@@ -1061,7 +1104,8 @@ h3 {
   .meter-steps,
   .sdg-card-grid,
   .voice-wall-grid,
-  .parallel-grid {
+  .parallel-grid,
+  .reaction-columns {
     grid-template-columns: 1fr;
   }
 
