@@ -73,7 +73,7 @@ const showEmptyState = () => {
 
   const copy = document.createElement("p");
   copy.textContent =
-    "Once someone signs the pledge and leaves a comment, it will appear here.";
+    "Once someone signs the pledge and leaves feedback or a reason, it will appear here.";
 
   const link = document.createElement("a");
   link.className = "button button-primary";

@@ -74,7 +74,7 @@ const createPledgeHandler = ({ store = createBlobPledgeStore() } = {}) => async 
   if (!submission.comment) {
     return response.status(400).json({
       ok: false,
-      error: "Please add a short comment before signing.",
+      error: "Please add feedback or a reason before signing.",
     });
   }
 

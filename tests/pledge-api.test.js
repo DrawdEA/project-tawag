@@ -79,7 +79,7 @@ test("rejects pledge submissions without a comment", async () => {
 
   assert.equal(response.statusCode, 400);
   assert.equal(response.body.ok, false);
-  assert.equal(response.body.error, "Please add a short comment before signing.");
+  assert.equal(response.body.error, "Please add feedback or a reason before signing.");
   assert.equal(store.saved.length, 0);
 });
 
