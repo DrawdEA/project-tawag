@@ -41,7 +41,8 @@ a {
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -990,6 +991,16 @@ h3 {
   color: var(--coral) !important;
 }
 
+.petition-wall-link {
+  width: fit-content;
+  color: var(--teal);
+  font-weight: 900;
+}
+
+.petition-wall-link::after {
+  content: " ->";
+}
+
 .pledge-panel {
   display: grid;
   gap: 16px;
@@ -1017,6 +1028,178 @@ h3 {
   border-top: 1px solid var(--line);
   color: var(--teal);
   font-weight: 850;
+}
+
+.pledge-wall-hero {
+  min-height: 62vh;
+  display: grid;
+  align-items: end;
+  padding-top: 112px;
+  background:
+    linear-gradient(135deg, rgba(7, 59, 58, 0.96), rgba(14, 103, 96, 0.88)),
+    var(--teal-deep);
+  color: #ffffff;
+}
+
+.pledge-wall-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.58fr);
+  gap: clamp(28px, 6vw, 84px);
+  align-items: end;
+  padding-bottom: clamp(54px, 8vw, 86px);
+}
+
+.pledge-wall-hero .section-kicker {
+  color: #f4c36c;
+}
+
+.pledge-wall-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.6rem, 7.4vw, 5.8rem);
+  line-height: 0.95;
+}
+
+.pledge-wall-hero p {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.pledge-wall-stat {
+  min-height: 230px;
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.1);
+  box-shadow: 0 28px 80px rgba(5, 29, 30, 0.24);
+}
+
+.pledge-wall-stat span {
+  font-size: clamp(4rem, 10vw, 7rem);
+  line-height: 0.82;
+  font-weight: 950;
+  color: #f4c36c;
+}
+
+.pledge-wall-stat p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 850;
+}
+
+.pledge-wall-section {
+  padding: clamp(58px, 9vw, 110px) 0;
+  background:
+    linear-gradient(180deg, #fffaf1 0%, #f7f2e8 100%);
+}
+
+.pledge-wall-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: clamp(28px, 5vw, 48px);
+}
+
+.pledge-wall-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1;
+}
+
+.pledge-wall-header > p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 850;
+}
+
+.pledge-wall-header > p.is-error {
+  color: var(--coral);
+}
+
+.pledge-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pledge-card {
+  min-height: 250px;
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+  padding: clamp(22px, 3vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 16px 44px rgba(18, 24, 26, 0.08);
+}
+
+.pledge-card:nth-child(3n + 2) {
+  background: #fff5e2;
+}
+
+.pledge-card:nth-child(3n) {
+  background: #eef8f4;
+}
+
+.pledge-card-comment {
+  position: relative;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  line-height: 1.28;
+  font-weight: 850;
+}
+
+.pledge-card-comment::before {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--teal);
+  font-size: 2.6rem;
+  line-height: 0.8;
+  content: "\201C";
+}
+
+.pledge-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.pledge-card-reference {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(14, 103, 96, 0.1);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.pledge-empty {
+  grid-column: 1 / -1;
+  max-width: 620px;
+  padding: clamp(28px, 5vw, 46px);
+  border: 1px dashed rgba(14, 103, 96, 0.35);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.pledge-empty h3 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.05;
+}
+
+.pledge-empty p {
+  color: var(--muted);
 }
 
 .reference-list {
@@ -1088,6 +1271,7 @@ section[id] {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+textarea:focus-visible,
 .button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
@@ -1168,6 +1352,24 @@ input:focus-visible,
   .hero {
     min-height: 84vh;
     padding-top: 116px;
+  }
+
+  .pledge-wall-hero-grid,
+  .pledge-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pledge-wall-hero {
+    min-height: auto;
+  }
+
+  .pledge-wall-header {
+    display: grid;
+    align-items: start;
+  }
+
+  .pledge-wall-stat {
+    min-height: 180px;
   }
 
   .hero-overlay {

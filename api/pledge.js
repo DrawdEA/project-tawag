@@ -1,3 +1,5 @@
+const { createBlobPledgeStore } = require("./pledge-store.js");
+
 const MAX_FIELD_LENGTHS = {
   name: 80,
   contact: 120,
@@ -33,7 +35,21 @@ const createReferenceId = () =>
 
 const getFirstName = (name) => name.split(/\s+/)[0] || "friend";
 
-module.exports = async function pledgeHandler(request, response) {
+const createWallEntry = (submission) => ({
+  referenceId: submission.referenceId,
+  submittedAt: submission.submittedAt,
+  displayName:
+    submission.anonymous || !submission.name
+      ? "Anonymous supporter"
+      : submission.name,
+  comment: submission.comment,
+  anonymous: submission.anonymous,
+});
+
+const createPledgeHandler = ({ store = createBlobPledgeStore() } = {}) => async (
+  request,
+  response
+) => {
   response.setHeader("Content-Type", "application/json");
 
   if (request.method !== "POST") {
@@ -69,11 +85,19 @@ module.exports = async function pledgeHandler(request, response) {
     });
   }
 
+  const wallEntry = createWallEntry(submission);
+  await store.savePledge(wallEntry);
   console.info("project_tawag_pledge_submission", JSON.stringify(submission));
 
   return response.status(201).json({
     ok: true,
     referenceId: submission.referenceId,
     message: `Thank you for signing the pledge, ${getFirstName(submission.name)}.`,
+    pledge: wallEntry,
   });
 };
+
+const pledgeHandler = createPledgeHandler();
+
+module.exports = pledgeHandler;
+module.exports.createPledgeHandler = createPledgeHandler;

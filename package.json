@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check script.js && node --check pledges.js && node --check api/pledge.js && node --check api/pledges.js && node --check api/pledge-store.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.6.1"
+  }
+}

@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const pledgeHandler = require("../api/pledge.js");
+const { createPledgeHandler } = require("../api/pledge.js");
 
 const createResponse = () => {
   const response = {
@@ -25,14 +25,27 @@ const createResponse = () => {
   return response;
 };
 
-const callHandler = async (request) => {
+const createStore = () => {
+  const store = {
+    saved: [],
+    async savePledge(pledge) {
+      this.saved.push(pledge);
+      return pledge;
+    },
+  };
+
+  return store;
+};
+
+const callHandler = async (request, store = createStore()) => {
   const response = createResponse();
+  const pledgeHandler = createPledgeHandler({ store });
   await pledgeHandler(request, response);
-  return response;
+  return { response, store };
 };
 
 test("accepts a pledge with a required comment", async () => {
-  const response = await callHandler({
+  const { response, store } = await callHandler({
     method: "POST",
     body: {
       name: "Eddy",
@@ -47,10 +60,14 @@ test("accepts a pledge with a required comment", async () => {
   assert.equal(response.body.ok, true);
   assert.match(response.body.referenceId, /^TAWAG-/);
   assert.equal(response.body.message, "Thank you for signing the pledge, Eddy.");
+  assert.equal(store.saved.length, 1);
+  assert.equal(store.saved[0].displayName, "Eddy");
+  assert.equal(store.saved[0].comment, "Entry-level work should come with fair pay and clear scope.");
+  assert.equal(store.saved[0].contact, undefined);
 });
 
 test("rejects pledge submissions without a comment", async () => {
-  const response = await callHandler({
+  const { response, store } = await callHandler({
     method: "POST",
     body: {
       name: "Eddy",
@@ -63,10 +80,11 @@ test("rejects pledge submissions without a comment", async () => {
   assert.equal(response.statusCode, 400);
   assert.equal(response.body.ok, false);
   assert.equal(response.body.error, "Please add a short comment before signing.");
+  assert.equal(store.saved.length, 0);
 });
 
 test("rejects unsupported methods", async () => {
-  const response = await callHandler({ method: "GET", body: {} });
+  const { response } = await callHandler({ method: "GET", body: {} });
 
   assert.equal(response.statusCode, 405);
   assert.equal(response.body.ok, false);

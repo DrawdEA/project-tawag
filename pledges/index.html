@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pledge Wall | Project TAWAG</title>
+    <meta
+      name="description"
+      content="Read public pledge comments from Project TAWAG supporters."
+    >
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="%230e6760"/><text x="40" y="48" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="white">TAWAG</text></svg>'
+    >
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="pledges-page">
+    <header class="site-header is-scrolled" data-header>
+      <a class="brand" href="/#top" aria-label="Project TAWAG home">
+        <span class="brand-mark" aria-hidden="true">TAWAG</span>
+        <span class="brand-text">Project TAWAG</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" data-nav aria-label="Campaign navigation">
+        <a href="/#narrative">Narrative</a>
+        <a href="/#evidence">Evidence</a>
+        <a href="/#pledge">Sign</a>
+        <a href="/pledges/" aria-current="page">Pledge Wall</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="pledge-wall-hero" aria-labelledby="pledge-wall-title">
+        <div class="section-shell pledge-wall-hero-grid">
+          <div>
+            <p class="section-kicker">Public pledge wall</p>
+            <h1 id="pledge-wall-title">People are choosing fair work over silent overload.</h1>
+            <p>
+              These are public comments from supporters who signed the Fair
+              Scope Pledge. Anonymous entries hide names, but keep the message
+              visible.
+            </p>
+            <div class="hero-actions" aria-label="Pledge wall actions">
+              <a class="button button-primary" href="/#pledge">Sign the pledge</a>
+              <a class="button button-secondary" href="/">Back to campaign</a>
+            </div>
+          </div>
+
+          <div class="pledge-wall-stat" aria-live="polite">
+            <span data-pledge-count>0</span>
+            <p>public pledge comments collected</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pledge-wall-section" aria-labelledby="pledge-list-title">
+        <div class="section-shell">
+          <div class="pledge-wall-header">
+            <div>
+              <p class="section-kicker">Supporter comments</p>
+              <h2 id="pledge-list-title">The wall</h2>
+            </div>
+            <p data-pledge-status aria-live="polite">Loading pledge comments...</p>
+          </div>
+
+          <div class="pledge-list" data-pledge-list></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-grid">
+        <div>
+          <p class="footer-title">Project TAWAG</p>
+          <p>Fair work, fair worth.</p>
+        </div>
+        <p class="footer-note">
+          Tamang Aksyon, Walang Abusadong Gawa.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/pledges.js" defer></script>
+  </body>
+</html>

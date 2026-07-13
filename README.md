@@ -16,11 +16,13 @@ Live site: https://advocacy-campaign.vercel.app
 - SDG 3, 5, 8, and 10 connection
 - Parallel text (real viral Reddit account, via a LinkedIn post)
 - Fair Scope Pledge form with backend comment submission
+- `/pledges` public pledge wall backed by Vercel Blob
 
 ## Run locally
 
-Open `index.html` in a browser, or run a simple static server:
+Install dependencies and run the Vercel dev server so API routes work:
 
 ```bash
-python3 -m http.server 8765
+npm install
+npx vercel dev
 ```
