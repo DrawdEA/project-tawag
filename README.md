@@ -15,7 +15,7 @@ Live site: https://advocacy-campaign.vercel.app
 - Research and evidence section
 - SDG 3, 5, 8, and 10 connection
 - Parallel text (real viral Reddit account, via a LinkedIn post)
-- Fair Scope Pledge prototype
+- Fair Scope Pledge form with backend comment submission
 
 ## Run locally
 

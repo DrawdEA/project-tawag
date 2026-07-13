@@ -442,8 +442,8 @@
             <h2 id="pledge-title">Sign the Fair Scope Pledge</h2>
             <p>
               Stand with entry-level workers who deserve fair workloads, fair
-              pay, and meaningful learning. This prototype pledge shows the kind
-              of action the campaign asks audiences to support.
+              pay, meaningful learning, and a real voice when the scope of work
+              expands.
             </p>
             <div class="petition-copy reveal">
               <p>
@@ -454,7 +454,7 @@
             </div>
           </div>
 
-          <form class="petition-form reveal" data-petition-form aria-label="Fair Scope Pledge form">
+          <form class="petition-form reveal" data-campaign-pledge-form aria-label="Fair Scope Pledge form">
             <label>
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
@@ -463,13 +463,26 @@
               <span>Email or organization</span>
               <input type="text" name="contact" placeholder="Email, section, or organization" required>
             </label>
+            <label>
+              <span>Why are you signing?</span>
+              <textarea
+                name="comment"
+                rows="5"
+                placeholder="Share a comment, suggestion, or experience."
+                required
+              ></textarea>
+            </label>
             <label class="petition-check">
               <input type="checkbox" name="support" required>
               <span>I support fair workload reviews.</span>
             </label>
-            <button class="button button-primary" type="submit">Add My Voice</button>
-            <p class="petition-success" data-petition-status aria-live="polite">
-              This prototype does not store submissions.
+            <label class="petition-check">
+              <input type="checkbox" name="anonymous">
+              <span>You may display my comment anonymously as campaign feedback.</span>
+            </label>
+            <button class="button button-primary" type="submit">Sign the Pledge</button>
+            <p class="petition-success" data-campaign-pledge-status aria-live="polite">
+              Your pledge will be sent to the Project TAWAG backend.
             </p>
           </form>
         </div>

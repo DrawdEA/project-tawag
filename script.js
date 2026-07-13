@@ -3,8 +3,9 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const pledgeStatus = document.querySelector("[data-pledge-status]");
 const pledgeInputs = document.querySelectorAll(".pledge-panel input");
-const petitionForm = document.querySelector("[data-petition-form]");
-const petitionStatus = document.querySelector("[data-petition-status]");
+const campaignPledgeForm = document.querySelector("[data-campaign-pledge-form]");
+const campaignPledgeStatus = document.querySelector("[data-campaign-pledge-status]");
+const campaignPledgeButton = campaignPledgeForm.querySelector("button[type='submit']");
 const frameCopy = document.querySelector("[data-frame-copy]");
 const frameButtons = document.querySelectorAll("[data-frame-button]");
 
@@ -81,15 +82,45 @@ frameButtons.forEach((button) => {
   });
 });
 
-petitionForm.addEventListener("submit", (event) => {
+campaignPledgeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const formData = new FormData(petitionForm);
+  const formData = new FormData(campaignPledgeForm);
   const name = String(formData.get("name") || "").trim();
-  const firstName = name.split(/\s+/)[0] || "friend";
+  const payload = {
+    name,
+    contact: String(formData.get("contact") || "").trim(),
+    comment: String(formData.get("comment") || "").trim(),
+    support: formData.has("support"),
+    anonymous: formData.has("anonymous"),
+  };
 
-  petitionStatus.textContent =
-    `Thank you for adding your voice, ${firstName}. Fair work starts when we stop treating exploitation as experience.`;
-  petitionStatus.classList.add("is-confirmed");
-  petitionForm.reset();
+  campaignPledgeButton.disabled = true;
+  campaignPledgeStatus.textContent = "Sending your pledge...";
+  campaignPledgeStatus.classList.remove("is-confirmed", "is-error");
+
+  try {
+    const response = await fetch("/api/pledge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Unable to send pledge right now.");
+    }
+
+    campaignPledgeStatus.textContent =
+      `${result.message} Reference: ${result.referenceId}.`;
+    campaignPledgeStatus.classList.add("is-confirmed");
+    campaignPledgeForm.reset();
+  } catch (error) {
+    campaignPledgeStatus.textContent = error.message;
+    campaignPledgeStatus.classList.add("is-error");
+  } finally {
+    campaignPledgeButton.disabled = false;
+  }
 });

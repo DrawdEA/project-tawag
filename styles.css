@@ -927,7 +927,8 @@ h3 {
   font-weight: 850;
 }
 
-.petition-form input[type="text"] {
+.petition-form input[type="text"],
+.petition-form textarea {
   width: 100%;
   min-height: 48px;
   border: 1px solid var(--line);
@@ -938,7 +939,13 @@ h3 {
   outline: none;
 }
 
-.petition-form input[type="text"]:focus {
+.petition-form textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.petition-form input[type="text"]:focus,
+.petition-form textarea:focus {
   border-color: var(--teal);
   box-shadow: 0 0 0 3px rgba(14, 103, 96, 0.16);
 }
@@ -962,6 +969,11 @@ h3 {
   cursor: pointer;
 }
 
+.petition-form .button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .petition-success {
   margin: 0;
   padding-top: 12px;
@@ -972,6 +984,10 @@ h3 {
 
 .petition-success.is-confirmed {
   color: var(--teal) !important;
+}
+
+.petition-success.is-error {
+  color: var(--coral) !important;
 }
 
 .pledge-panel {
