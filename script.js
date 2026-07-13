@@ -92,7 +92,6 @@ campaignPledgeForm.addEventListener("submit", async (event) => {
     contact: String(formData.get("contact") || "").trim(),
     comment: String(formData.get("comment") || "").trim(),
     support: formData.has("support"),
-    anonymous: formData.has("anonymous"),
   };
 
   campaignPledgeButton.disabled = true;

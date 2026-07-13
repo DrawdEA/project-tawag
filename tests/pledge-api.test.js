@@ -52,7 +52,6 @@ test("accepts a pledge with a required comment", async () => {
       contact: "C1",
       comment: "Entry-level work should come with fair pay and clear scope.",
       support: true,
-      anonymous: false,
     },
   });
 
@@ -64,6 +63,24 @@ test("accepts a pledge with a required comment", async () => {
   assert.equal(store.saved[0].displayName, "Eddy");
   assert.equal(store.saved[0].comment, "Entry-level work should come with fair pay and clear scope.");
   assert.equal(store.saved[0].contact, undefined);
+});
+
+test("ignores legacy anonymous requests and shows the signer name", async () => {
+  const { response, store } = await callHandler({
+    method: "POST",
+    body: {
+      name: "JJ",
+      contact: "C1",
+      comment: "Fair work needs fair scope.",
+      support: true,
+      anonymous: true,
+    },
+  });
+
+  assert.equal(response.statusCode, 201);
+  assert.equal(store.saved.length, 1);
+  assert.equal(store.saved[0].displayName, "JJ");
+  assert.equal(store.saved[0].anonymous, undefined);
 });
 
 test("rejects pledge submissions without a comment", async () => {

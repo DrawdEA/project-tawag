@@ -32,9 +32,8 @@ test("returns public pledge wall entries", async () => {
         {
           referenceId: "TAWAG-123",
           submittedAt: "2026-07-13T04:00:00.000Z",
-          displayName: "Anonymous supporter",
+          displayName: "JJ",
           comment: "Fair work needs fair scope.",
-          anonymous: true,
         },
       ];
     },

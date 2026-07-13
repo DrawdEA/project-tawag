@@ -49,7 +49,7 @@ const createPledgeCard = (pledge, index) => {
   meta.className = "pledge-card-meta";
 
   const name = document.createElement("span");
-  name.textContent = pledge.displayName || "Anonymous supporter";
+  name.textContent = pledge.displayName || "Project TAWAG supporter";
 
   const date = document.createElement("span");
   date.textContent = formatDate(pledge.submittedAt);

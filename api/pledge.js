@@ -38,12 +38,8 @@ const getFirstName = (name) => name.split(/\s+/)[0] || "friend";
 const createWallEntry = (submission) => ({
   referenceId: submission.referenceId,
   submittedAt: submission.submittedAt,
-  displayName:
-    submission.anonymous || !submission.name
-      ? "Anonymous supporter"
-      : submission.name,
+  displayName: submission.name || "Project TAWAG supporter",
   comment: submission.comment,
-  anonymous: submission.anonymous,
 });
 
 const createPledgeHandler = ({ store = createBlobPledgeStore() } = {}) => async (
@@ -68,7 +64,6 @@ const createPledgeHandler = ({ store = createBlobPledgeStore() } = {}) => async 
     contact: trimField(body.contact, MAX_FIELD_LENGTHS.contact),
     comment: trimField(body.comment, MAX_FIELD_LENGTHS.comment),
     support: body.support === true || body.support === "on",
-    anonymous: body.anonymous === true || body.anonymous === "on",
   };
 
   if (!submission.comment) {
